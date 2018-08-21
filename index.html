@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This is My first game</title>
+
+    <!--在这里把我已经分离出去的js文件导入进来-->
+    <script type="text/javascript" src="./Base.js"></script>
+    <script type="text/javascript" src="./Animation.js"></script>
+    <script type="text/javascript" src="./Sprite.js"></script>
+    <script type="text/javascript" src="./Game.js"></script>
+
+    <script type="text/javascript" src="./player.js"></script>
+    <script type="text/javascript" src="./enemy.js"></script>
+
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            background: #ffffff;
+            cursor: crosshair;
+            margin-left: 10px;
+            margin-top: 10px;
+            -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /*V1.0 : 实现游戏场景的初始化*/
+        /*V2.0: 实现画布的不断刷新*/
+        /*V3.0: 实现了游戏中人物的运动*/
+        /*V4.0: 实现了js代码的分离*/
+        /*V5.0：实现键盘对人物移动的控制*/
+        /*V6.0： 完成Game游戏类的封装*/
+        /*V7.0： 实现敌人角色的加入, player，enemy类的封装; 实现了我方角色和敌人角色的自由移动*/
+        /*V8.0： 实现精灵之间的碰撞检测功能*/
+        /*V9.0： 实现游戏中分数的统计， 输赢的判定*/
+        /*V10.0: 实现了游戏背景的滚动效果和场景的优化*/
+
+
+
+    </style>
+    <script>
+
+        // 初始化
+        function init() {
+
+            // 利用我自己定义的回调函数去加载图片
+            ImgCache = loadImage([
+                    {
+                        id: "player",
+                        url: "./res/player.png"
+                    },
+                    {
+                        id: "sky",
+                        url: "./res/sky.png"
+                    },
+                    {
+                        id: "grass",
+                        url: "./res/grass.png"
+                    },
+                    {
+                        id: "grass2",
+                        url: "./res/grass2.png"
+                    },
+                    {
+                        id: "tree",
+                        url: "./res/tree.png"
+                    },
+                    {
+                        id: "smalltree",
+                        url: "./res/smalltree.png"
+                    },
+                    {
+                        id: "tree-twotrunks",
+                        url: "./res/tree-twotrunks.png"
+                    },
+                    {
+                        id: "enemy",
+                        url: "./res/enemy.png"
+                    },
+                    {
+                        id: "bg",
+                        url: "./res/bg.png"
+                    }],
+                startDemo
+            );
+        }
+
+        // 定义游戏运动的按键
+        var key = {
+            A: 65,
+            W: 87,
+            D: 68
+        }
+
+
+        // 声明一个全局game对象
+        // 开始创建一个game对象
+        var game = new Game({
+            FPS: 30,
+            width: 1024,
+            height: 512,
+            sprites: []
+        });
+
+        // 游戏开始Demo的启动函数
+        function startDemo() {
+            alert("游戏素材已经完全加载完毕！");
+
+
+            // 将必要的精灵加入到gane的精灵列表内
+            // 加入马里奥人物（马里奥人物是我的第0个人物对象）
+            game.sprites.push(createPlayer());
+
+            // 加入5个敌人
+            for (var i = 0; i < 15; i++) {
+
+                // 调用创建敌人的构造函数
+                game.sprites.push(createEnemy());
+            }
+
+            // 游戏的初始化
+            game.init();
+
+            // 开始游戏
+            game.start();
+        }
+
+
+    </script>
+</head>
+<body onload="init()">
+<div id="statebar" style="font-size:24px; position:absolute; top:10px; left:200px;">
+    FPS : <span id="fps">0</span>
+    Time : <span id="timeCount"></span>
+    Life : <span id="lifeCount">3</span>
+</div>
+</body>
+</html>
