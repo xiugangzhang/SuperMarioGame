@@ -1,4 +1,7 @@
 # SuperMarioGame
+
+## 试玩链接：http://htmlpreview.github.io/?https://github.com/xiugangzhang/SuperMarioGame/blob/master/index.html
+
  ![image](https://github.com/xiugangzhang/SuperMarioGame/blob/master/preview.jpg)
 - V1.0 : 实现游戏场景的初始化
 - V2.0: 实现画布的不断刷新
