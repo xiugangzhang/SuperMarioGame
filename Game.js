@@ -126,7 +126,7 @@ Game.prototype = {
             // 如果发生敌人和玩家的碰撞， 就结束游戏(有三个生命值)
             if (this.sprites[0].HP > 0) {
                 this.sprites[0].HP--;
-                game.playSingleMusic('kill', './audio/踩敌人.mp3');
+                game.playSingleMusic('kill', './res/踩敌人.mp3');
             }
         }
         // 我是精灵角色中的第0个角色，直接得到我的生命值并显示
@@ -136,7 +136,7 @@ Game.prototype = {
             // 1. 清空主循环中的定时器
             clearInterval(this.mainLoop);
             document.getElementById('music').innerHTML = '';
-            game.playSingleMusic('end', './audio/游戏结束.mp3');
+            game.playSingleMusic('end', './res/游戏结束.mp3');
             alert("Game Over.\n Your score : " + playedTime);
             document.getElementById('score').innerHTML = '<span style="color: red;">您的最终得分：'+playedTime.toString()+'</span>';
             // 2.直接退出程序
