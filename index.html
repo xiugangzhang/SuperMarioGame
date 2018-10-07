@@ -92,7 +92,11 @@
                     }],
                 startDemo
             );
+
+            // 背景音乐
+            game.playMusic('music', './audio/地上.mp3')
         }
+
 
         // 定义游戏运动的按键
         var key = {
@@ -142,6 +146,10 @@
     FPS : <span id="fps">0</span>
     Time : <span id="timeCount"></span>
     Life : <span id="lifeCount">3</span>
+    <span id="score"></span>
 </div>
+<div id="music"></div>
+<div id="kill"></div>
+<div id="end"></div>
 </body>
 </html>

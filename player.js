@@ -86,7 +86,7 @@ function createPlayer() {
         handleInput: function () {
             // 注意这里的大小写要完全一致
             var left = keyState[key.A];
-            var right = keyState[key.D] = true;
+            var right = keyState[key.D];
             var up = keyState[key.W];
 
             // 获得用户当前的面对的方向(得到了一个字符串)
@@ -99,6 +99,7 @@ function createPlayer() {
                 // 站在地上(为对象添加一个属性)
                 this.jumping = false;
                 this.speedY = 0;
+                this.setAnim("walk-" + dirX);
             }
 
             // 如果用户按下了上按键, 而且当前没有在跳跃中
@@ -118,7 +119,7 @@ function createPlayer() {
                 // 如果没有在跳跃中 玩家就进入到战力状态
                 if (!this.jumping) {
                     // 说明玩家已经落地了
-                    this.setAnim("stand-" + dirX);
+                    this.setAnim("walk-" + dirX);
                 }
             }
             // 如果按下了左键， 而且当前不是向左走, 就向左走
