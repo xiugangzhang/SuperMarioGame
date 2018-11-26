@@ -54,7 +54,7 @@ function createPlayer() {
             }),
 
             // 向左移动的动画
-            "walk-left": new Animation({
+            "walk-left": new Animation({ 
                 img: "player",
                 // 这个动画由三帧组成， 对应图片中的第一行
                 frames: [
